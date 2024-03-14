@@ -11,21 +11,21 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'mvn clean package'
+                    bat 'mvn clean package'
                 }
             }
         }
         stage('Test with JaCoCo') {
             steps {
                 script {
-                    sh 'mvn test jacoco:report'
+                    bat 'mvn test jacoco:report'
                 }
             }
         }
     }
     post {
         always {
-            jacoco(execPattern: '**/target/site/jacoco/jacoco.xml')
+            // Insert appropriate command or script to publish the Jacoco report on Windows
         }
     }
 }
